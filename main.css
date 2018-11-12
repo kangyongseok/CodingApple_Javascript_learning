@@ -4,6 +4,9 @@
 
 .jumbotron {color:white;}
 
+.container {
+    margin-top:30px;
+}
 
 
 .modal-area{
@@ -34,3 +37,6 @@
     padding:10px;
 }
 
+.empty-txt {text-align: center;}
+
+.route{text-align: center;display: block;margin-top:20px;}

@@ -113,5 +113,32 @@
       </div>
 
       <script src="main.js"></script>
+      <script>
+        // modal script
+        /* 
+        1. Login, SignUp 버튼을 클릭하면 모달창이 뜬다.
+        2. login 을 클릭하면 '로그인하세요', SignUP을 클릭하면 '가입하세요'
+        3. modal 의 검은배경을 클릭하면 modal이 사라진다.
+        */
+
+        let modal_title = document.querySelector('.modal-title');
+        let modal = document.querySelector('.modal-area');
+        let modal_btn = document.querySelectorAll('.modal-btn');
+
+        // modal open
+        modal_btn.forEach(modals => {
+            modals.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modal_title.innerHTML = modals.title;
+            })
+        });
+
+        // modal close
+        modal.addEventListener('click', e => {
+            if(e.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+      </script>
 </body>
 </html>
