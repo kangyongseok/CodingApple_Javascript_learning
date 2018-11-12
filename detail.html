@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coding Apple: Create Shopping mall</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+    <!-- navi bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark row justify-content-between">
+            <a class="navbar-brand col-md-auto" href="#">CodeReading</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+        <!-- contents -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/img1.jpg" alt="" width="100%">
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mt-5">Blossom Dress</h4>
+                    <p>이 드레스는 영국에서부터 시작하여....</p>
+                    <p>$ 199</p>
+                    <form class="mb-3">
+                        <div class="form-row">
+                            <div class="col"><input type="text" class="form-control" placeholder="수량" id="quantity"></div>
+                            <div class="col"><select class="form-control" id="size">
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                </select></div>
+                            <div class="col"><select class="form-control" id="color">
+                                    <option>Red</option>
+                                    <option>Blue</option>
+                                    <option>Green</option>
+                                </select></div>
+                        </div>
+                    </form>
+                    <button class="btn btn-danger" id="add">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <a href="checkout.html" class="route">결과페이지 바로가기</a>
+
+        <script>
+          // Local Storage 로 선택한 상품정보 보내기
+          let i = 1
+          let add = document.querySelector('#add');
+          add.addEventListener('click', function() {
+            var data = {
+              quantity : document.querySelector('#quantity').value,
+              size: document.querySelector('#size').value,
+              price: 199,
+              color : document.querySelector('#color').value
+            }
+            var productData = JSON.stringify(data);
+            localStorage.setItem(`product ${i}`, productData);
+            i += 1;
+            alert(`수량 : ${data.quantity}\n사이즈 : ${data.size}\n추가되었습니다.`)
+          })
+        </script>
+
+    <!-- Tab menu -->
+    <style>
+        .list {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid #ccc;
+        }
+        
+        .tab-button {
+          display: block;
+          padding: 10px 20px 10px 20px;
+          float: left;
+          margin-right: -1px;
+          margin-bottom: -1px;
+          color: grey;
+          text-decoration: none;
+        }
+        
+        .active {
+          border-top: 2px solid orange;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid white;
+          border-left: 1px solid #ccc;
+          color: black;
+          margin-top: -2px;
+        }
+        
+        .tab-content {
+          display: none;
+          padding: 10px;
+        }
+        
+        .show-tab {
+          display: block;
+        }
+      </style>
+    
+      <br>
+      <!--active라는 클래스는 버튼 하이라이트해주는 클래스, show-tab은 탭 내용 보여주는 클래스-->
+      <div class="container mt-5" style="margin-bottom: 500px;">
+        <ul class="list">
+          <li><a class="tab-button" data-id="0">Products</a></li>
+          <li><a class="tab-button active" data-id="1">Information</a></li>
+          <li><a class="tab-button" data-id="2">Shipping</a></li>
+          <div style="clear:both;"></div>
+        </ul>
+    
+        <div class="tab-content">
+          <p>It's products yo.</p>
+        </div>
+        <div class="tab-content show-tab">
+          <p>No info for you.</p>
+        </div>
+        <div class="tab-content">
+          <p>Shipping costs a lot. I mean A LOT LOT</p>
+        </div>
+    
+      </div>
+      
+      <script>
+        let tab_btn = document.querySelectorAll('.tab-button');
+        let tab_cont = document.querySelectorAll('.tab-content');
+
+        for(let j = 0; j < tab_btn.length; j++) {
+          tab_btn[j].addEventListener('click', function() {
+            for(let i = 0; i < tab_btn.length; i++) {
+              tab_btn[i].classList.remove('active');
+              tab_cont[i].style.display = 'none';
+            }
+            tab_btn[j].classList.add('active');
+            tab_cont[j].style.display = 'block';
+          })
+        }
+      </script>
+
+      
+</body>
+</html>
