@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coding Apple: Create Shopping mall</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+    <!-- navi bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark row justify-content-between">
+            <a class="navbar-brand col-md-auto" href="#">CodeReading</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+
+        <!-- Loccal Storage에 저장된 상품정보 출력 -->
+        <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">사이즈</th>
+                    <th scope="col">가격</th>
+                    <th scope="col">색상</th>
+                    <th scope="col">수량</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colspan="5" class="empty-txt">상품정보가 없습니다.</th>
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+              <a href="detail.html" class="route">상품정보페이지 바로가기</a>
+
+      
+        <script>
+            if(localStorage.length != 0) {
+                let empty_txt = document.querySelector('.empty-txt');
+                empty_txt.style.display = 'none';
+            }
+
+            // 샘플데이터를 Local Storage에 추가하기위한 코드
+            for(let i = 0; i < localStorage.length; i++) {
+                let data = localStorage.getItem('product ' + (i + 1));
+                let objectData = JSON.parse(data);
+
+                let template = `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${objectData.size}</td>
+                        <td>${objectData.price}</td>
+                        <td>${objectData.color}</td>
+                        <td>${objectData.quantity}</td>    
+                    </tr>
+                `;
+
+                $('tbody').append(template);
+               
+            }
+        </script>
+
+</body>
+</html>
