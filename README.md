@@ -9,5 +9,9 @@ Coding Apple offline course learn to create javascript shopping mall with bootst
 4. sudo code 작성으로 효율적인 방법으로 프로그래밍을 할 수 있다.
 5. JSON 으로 데이터를 다루고 localStorage 를 활용할 줄 안다.
 
+>추가되어야 할 사항 - 181113
+1. 모바일최적화 필요
+2. 모바일에서는 Local Storage 에 데이터가 쌓이지않음
+
  Email: <kangyongsuek@gmail.com><br/>
  blog: http://code-reading.tistory.com/
